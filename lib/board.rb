@@ -1,20 +1,22 @@
 # Class Board
 class Board
+  attr_accessor :board
+
   def initialize
-    @write = Array.new(3) { Array.new(3) }
+    @board = Array.new(3) { Array.new(3) }
+    default_board
   end
 
-  def display_board
-    default_board.each do |item|
-      puts "[#{item.join('][')}]"
-    end
+  def current_board
+    puts "--------------"
+    board.each { |item| puts "[#{item.join('][')}]" }
   end
 
   private
 
   def default_board
     count = 0
-    @write.map do |item|
+    self.board = @board.map do |item|
       item.map do |i|
         count += 1 if i.nil?
       end
